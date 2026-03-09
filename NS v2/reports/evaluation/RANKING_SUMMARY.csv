@@ -1,0 +1,6 @@
+model_id,h_4_relmae,h_13_relmae,h_26_relmae,h_52_relmae,avg_relmae,rank,interpretation
+rw_yield,1.0000,1.0000,1.0000,1.0000,1.0000,BENCH,"Benchmark (Random Walk, sem drift)"
+dl,0.9539,0.9625,0.9411,0.9363,0.9485,3,"Diebold-Li: VAR nos betas NS (baseline estrutural)"
+dlfavar_all,0.8825,0.8701,0.8650,0.8640,0.8704,2,"FAVAR com 5 PCs gerais; menos parcimonioso"
+dlfavar_fira,0.8755,0.8676,0.8589,0.8593,0.8653,4,"FAVAR reduzido (3 grupos); bom mas especializado"
+dlfavar_group,0.8469,0.8395,0.8057,0.8108,0.8257,1★,"FAVAR com 6 grupos macro-financeiros + Selic; RECOMENDADO"

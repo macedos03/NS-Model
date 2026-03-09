@@ -1,0 +1,25 @@
+{
+  "train_start": null,
+  "train_end": null,
+  "oos_start": null,
+  "oos_end": null,
+  "replication_note": "Preencher janela comparável ao paper antes do backtest final.",
+  "ns_curve_columns": [
+    "bbg_bz_bond_1y",
+    "bbg_bz_bond_3y",
+    "bbg_bz_bond_5y",
+    "bbg_bz_bond_10y"
+  ],
+  "ns_common_start": "2009-09-25",
+  "panel_weekly_start": "2005-01-07",
+  "panel_weekly_end": "2026-02-23",
+  "panel_weekly_rows": 1104,
+  "panel_weekly_ns_rows": 858,
+  "missing_exclusion_threshold": 0.7,
+  "dropped_columns_by_missing": [
+    "focus_imp_next_12_average",
+    "focus_exp_next_12_median",
+    "focus_exp_next_12_average",
+    "focus_imp_next_12_median"
+  ]
+}

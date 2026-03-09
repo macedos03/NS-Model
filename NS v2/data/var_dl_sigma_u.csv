@@ -1,0 +1,10 @@
+row_state,col_state,sigma_u
+beta1_level,beta1_level,0.8653290994467334
+beta1_level,beta2_slope,-0.8289638998484912
+beta1_level,beta3_curvature,-1.6082118962235716
+beta2_slope,beta1_level,-0.8289638998484912
+beta2_slope,beta2_slope,0.8386926592735324
+beta2_slope,beta3_curvature,1.458419358236217
+beta3_curvature,beta1_level,-1.6082118962235716
+beta3_curvature,beta2_slope,1.458419358236217
+beta3_curvature,beta3_curvature,4.0561712633083955

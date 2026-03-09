@@ -1,0 +1,28 @@
+{
+  "model_id": "dl",
+  "state_columns": [
+    "beta1_level",
+    "beta2_slope",
+    "beta3_curvature"
+  ],
+  "lag_order_p": 5,
+  "window": {
+    "train_start": "2009-09-25",
+    "oos_start": "2021-03-19",
+    "oos_end": "2026-02-23"
+  },
+  "n_rows_state": 858,
+  "week_frequency": {
+    "n_gaps_non_7d": 1,
+    "max_gap_days": 7,
+    "min_gap_days": 3
+  },
+  "var_base_is_stable": true,
+  "var_base_max_abs_eig": 0.997006795143003,
+  "var_base_ljungbox_min_pvalue": 0.2601070278649607,
+  "var_base_resid_autocorr_flag": false,
+  "n_oos_origins": 259,
+  "n_state_forecasts": 3108,
+  "n_yield_forecasts": 4144,
+  "weekly_continuity_gaps_pre_oos": 0
+}

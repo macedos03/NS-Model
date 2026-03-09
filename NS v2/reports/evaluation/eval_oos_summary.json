@@ -1,0 +1,27 @@
+{
+  "n_total_obs": 18740,
+  "n_models": 5,
+  "models": [
+    "dl",
+    "dlfavar_all",
+    "dlfavar_fira",
+    "dlfavar_group",
+    "rw_yield"
+  ],
+  "horizons": [
+    "4",
+    "13",
+    "26",
+    "52"
+  ],
+  "maturities": [
+    1.0,
+    3.0,
+    5.0,
+    10.0
+  ],
+  "date_range": {
+    "start": "2021-03-19",
+    "end": "2026-01-23"
+  }
+}

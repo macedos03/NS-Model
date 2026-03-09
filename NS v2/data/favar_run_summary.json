@@ -1,0 +1,157 @@
+{
+  "lambda_ns": 0.266,
+  "curve_map": {
+    "bbg_bz_bond_1y": 1.0,
+    "bbg_bz_bond_3y": 3.0,
+    "bbg_bz_bond_5y": 5.0,
+    "bbg_bz_bond_10y": 10.0
+  },
+  "p_max": 12,
+  "horizons_steps": [
+    4,
+    13,
+    26,
+    52
+  ],
+  "selic_col": "bbg_selic",
+  "strict_weekly_horizon": true,
+  "paths": {
+    "ns_factors": "Q:\\Gabriel de Macedo\\Política Monetária\\NS Model\\NS v2\\data\\ns_factors_weekly.parquet",
+    "pca_all": "Q:\\Gabriel de Macedo\\Política Monetária\\NS Model\\NS v2\\data\\pca_all_scores_weekly.parquet",
+    "pca_group": "Q:\\Gabriel de Macedo\\Política Monetária\\NS Model\\NS v2\\data\\pca_group_scores_weekly.parquet",
+    "pca_fira": "Q:\\Gabriel de Macedo\\Política Monetária\\NS Model\\NS v2\\data\\pca_fira_state_weekly.parquet",
+    "panel_weekly": "Q:\\Gabriel de Macedo\\Política Monetária\\NS Model\\NS v2\\data\\panel_weekly_ns_curve_common.parquet",
+    "sample_config": "Q:\\Gabriel de Macedo\\Política Monetária\\NS Model\\NS v2\\data\\sample_config.json"
+  },
+  "models": {
+    "dl": {
+      "model_id": "dl",
+      "state_columns": [
+        "beta1_level",
+        "beta2_slope",
+        "beta3_curvature"
+      ],
+      "lag_order_p": 5,
+      "window": {
+        "train_start": "2009-09-25",
+        "oos_start": "2021-03-19",
+        "oos_end": "2026-02-23"
+      },
+      "n_rows_state": 858,
+      "week_frequency": {
+        "n_gaps_non_7d": 1,
+        "max_gap_days": 7,
+        "min_gap_days": 3
+      },
+      "var_base_is_stable": true,
+      "var_base_max_abs_eig": 0.997006795143003,
+      "var_base_ljungbox_min_pvalue": 0.2601070278649607,
+      "var_base_resid_autocorr_flag": false,
+      "n_oos_origins": 259,
+      "n_state_forecasts": 3108,
+      "n_yield_forecasts": 4144,
+      "weekly_continuity_gaps_pre_oos": 0
+    },
+    "dlfavar_all": {
+      "model_id": "dlfavar_all",
+      "state_columns": [
+        "beta1_level",
+        "beta2_slope",
+        "beta3_curvature",
+        "pc_all_1",
+        "pc_all_2",
+        "pc_all_3",
+        "pc_all_4",
+        "pc_all_5",
+        "bbg_selic"
+      ],
+      "lag_order_p": 3,
+      "window": {
+        "train_start": "2009-09-25",
+        "oos_start": "2021-03-19",
+        "oos_end": "2026-02-23"
+      },
+      "n_rows_state": 858,
+      "week_frequency": {
+        "n_gaps_non_7d": 1,
+        "max_gap_days": 7,
+        "min_gap_days": 3
+      },
+      "var_base_is_stable": true,
+      "var_base_max_abs_eig": 0.98873110601854,
+      "var_base_ljungbox_min_pvalue": 1.6605267559687016e-38,
+      "var_base_resid_autocorr_flag": true,
+      "n_oos_origins": 259,
+      "n_state_forecasts": 9324,
+      "n_yield_forecasts": 4144,
+      "weekly_continuity_gaps_pre_oos": 0
+    },
+    "dlfavar_group": {
+      "model_id": "dlfavar_group",
+      "state_columns": [
+        "beta1_level",
+        "beta2_slope",
+        "beta3_curvature",
+        "pc1_inflacao",
+        "pc1_atividade",
+        "pc1_fiscal",
+        "pc1_risco",
+        "pc1_incerteza",
+        "pc1_financeiro",
+        "bbg_selic"
+      ],
+      "lag_order_p": 2,
+      "window": {
+        "train_start": "2009-09-25",
+        "oos_start": "2021-03-19",
+        "oos_end": "2026-02-23"
+      },
+      "n_rows_state": 858,
+      "week_frequency": {
+        "n_gaps_non_7d": 1,
+        "max_gap_days": 7,
+        "min_gap_days": 3
+      },
+      "var_base_is_stable": true,
+      "var_base_max_abs_eig": 0.9915027921453448,
+      "var_base_ljungbox_min_pvalue": 1.175339054924696e-42,
+      "var_base_resid_autocorr_flag": true,
+      "n_oos_origins": 259,
+      "n_state_forecasts": 10360,
+      "n_yield_forecasts": 4144,
+      "weekly_continuity_gaps_pre_oos": 0
+    },
+    "dlfavar_fira": {
+      "model_id": "dlfavar_fira",
+      "state_columns": [
+        "beta1_level",
+        "beta2_slope",
+        "beta3_curvature",
+        "pc1_inflacao",
+        "pc1_atividade",
+        "pc1_fiscal",
+        "bbg_selic"
+      ],
+      "lag_order_p": 2,
+      "window": {
+        "train_start": "2009-09-25",
+        "oos_start": "2021-03-19",
+        "oos_end": "2026-02-23"
+      },
+      "n_rows_state": 858,
+      "week_frequency": {
+        "n_gaps_non_7d": 1,
+        "max_gap_days": 7,
+        "min_gap_days": 3
+      },
+      "var_base_is_stable": true,
+      "var_base_max_abs_eig": 0.992984874279943,
+      "var_base_ljungbox_min_pvalue": 1.372188084166558e-42,
+      "var_base_resid_autocorr_flag": true,
+      "n_oos_origins": 259,
+      "n_state_forecasts": 7252,
+      "n_yield_forecasts": 4144,
+      "weekly_continuity_gaps_pre_oos": 0
+    }
+  }
+}

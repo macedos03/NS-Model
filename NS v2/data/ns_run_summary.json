@@ -1,0 +1,26 @@
+{
+  "lambda_ns": 0.266,
+  "n_weeks_input": 858,
+  "n_weeks_estimated": 858,
+  "n_weeks_dropped_incomplete_curve": 0,
+  "curve_columns": [
+    "bbg_bz_bond_1y",
+    "bbg_bz_bond_3y",
+    "bbg_bz_bond_5y",
+    "bbg_bz_bond_10y"
+  ],
+  "tau_years": [
+    1.0,
+    3.0,
+    5.0,
+    10.0
+  ],
+  "unit_profile": {
+    "bbg_bz_bond_1y": "percent_like",
+    "bbg_bz_bond_3y": "percent_like",
+    "bbg_bz_bond_5y": "percent_like",
+    "bbg_bz_bond_10y": "percent_like"
+  },
+  "fit_mae_mean": 0.05463008664772713,
+  "fit_rmse_mean": 0.06353926142354856
+}

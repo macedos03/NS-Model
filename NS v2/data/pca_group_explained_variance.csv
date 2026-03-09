@@ -1,0 +1,7 @@
+group,component,explained_variance_ratio,n_vars,zero_std_dropped
+inflacao,pc1_inflacao,0.2504617509088543,9,0
+atividade,pc1_atividade,0.222647449211651,15,0
+fiscal,pc1_fiscal,0.25870003367397565,15,0
+risco,pc1_risco,0.543778876502848,4,0
+incerteza,pc1_incerteza,0.48461413643132667,10,0
+financeiro,pc1_financeiro,0.17501687224900853,25,0

@@ -1,0 +1,48 @@
+{
+  "panel_path": "Q:\\Gabriel de Macedo\\Política Monetária\\NS Model\\NS v2\\data\\panel_weekly_raw_pit_filtered.parquet",
+  "metadata_path": "Q:\\Gabriel de Macedo\\Política Monetária\\NS Model\\NS v2\\data\\metadata_variables_review.csv",
+  "n_rows_total": 1104,
+  "n_rows_fit": 1104,
+  "fit_start": "2005-01-07",
+  "fit_end": "2026-02-23",
+  "stationarity_mode": "adf_or_acf",
+  "n_transform_manual": 0,
+  "min_coverage_fit": 0.7,
+  "winsor_lower": null,
+  "winsor_upper": null,
+  "n_features_initial": 90,
+  "n_features_after_coverage": 81,
+  "n_features_dropped_coverage": 9,
+  "n_features_dropped_zero_std": 3,
+  "n_components_all": 5,
+  "explained_variance_all": [
+    0.09185123898375296,
+    0.08306374952275034,
+    0.06467156131440846,
+    0.055332378009346546,
+    0.044196424953202196
+  ],
+  "groups_used": [
+    "inflacao",
+    "atividade",
+    "fiscal",
+    "risco",
+    "incerteza",
+    "financeiro"
+  ],
+  "group_components": [
+    "pc1_inflacao",
+    "pc1_atividade",
+    "pc1_fiscal",
+    "pc1_risco",
+    "pc1_incerteza",
+    "pc1_financeiro"
+  ],
+  "fira_columns": [
+    "week_ref",
+    "pc1_inflacao",
+    "pc1_atividade",
+    "pc1_fiscal",
+    "bbg_selic"
+  ]
+}

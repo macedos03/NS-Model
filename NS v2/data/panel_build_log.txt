@@ -1,0 +1,32 @@
+PANEL BUILD LOG - STEP 1 (DAILY PIT -> WEEKLY SNAPSHOT)
+==============================================================================
+focus_rows_ingested: 336490
+bbg_rows_ingested: 223967
+duplicates_removed: 0
+panel_daily_shape: (5516, 100)
+panel_weekly_shape: (1104, 100)
+
+QA DAILY
+- day_ref_sorted: True
+- day_ref_duplicated_count: 0
+- business_day_continuity_ok: True
+- business_day_missing_count: 0
+- missing_ratio_top10: {'focus_imp_next_12_average': 0.7902465554749819, 'focus_exp_next_12_median': 0.7902465554749819, 'focus_exp_next_12_average': 0.7902465554749819, 'focus_imp_next_12_median': 0.7902465554749819, 'focus_dgdp_year_0': 0.6172951414068165, 'focus_dgdp_year_2': 0.6172951414068165, 'focus_dgdp_year_1': 0.6172951414068165, 'focus_dgdp_next_12_average': 0.6172951414068165, 'focus_dgdp_year_3': 0.6172951414068165, 'focus_dgdp_next_12_median': 0.6172951414068165}
+- column_name_unique: True
+- availability_rule: asof_le_day_ref
+- bfill_used: False
+- curve_coverage_daily: {'bbg_bz_bond_1y': 1.0, 'bbg_bz_bond_3y': 1.0, 'bbg_bz_bond_5y': 0.7770123277737491, 'bbg_bz_bond_10y': 0.7770123277737491}
+- curve_scale_hint: {'bbg_bz_bond_1y': 'percent_like', 'bbg_bz_bond_3y': 'percent_like', 'bbg_bz_bond_5y': 'percent_like', 'bbg_bz_bond_10y': 'percent_like'}
+- scale_alert_count: 2
+- scale_alert_examples: ['bbg_us_5y_breakeven_inflation', 'bbg_fed_funds']
+
+QA WEEKLY
+- week_ref_sorted: True
+- week_ref_duplicated_count: 0
+- n_weeks: 1104
+- curve_coverage_weekly: {'bbg_bz_bond_1y': 1.0, 'bbg_bz_bond_3y': 1.0, 'bbg_bz_bond_5y': 0.7771739130434783, 'bbg_bz_bond_10y': 0.7771739130434783}
+- synthetic_friday_weeks: 0
+- synthetic_friday_ratio: 0.0
+- missing_exclusion_threshold: 0.7
+- removed_columns_by_missing: ['focus_imp_next_12_average', 'focus_exp_next_12_median', 'focus_exp_next_12_average', 'focus_imp_next_12_median']
+- removed_columns_count: 4

@@ -1,0 +1,5 @@
+model_id,winrate_vs_rw_pct,n_obs
+dl,56.7769477054429,3748
+dlfavar_all,50.53361792956243,3748
+dlfavar_fira,52.50800426894344,3748
+dlfavar_group,53.62860192102455,3748

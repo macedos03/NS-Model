@@ -1,0 +1,28 @@
+project_name: NS-Model
+timezone: America/Sao_Paulo
+data_dir: data
+
+maturities_months: [1,2,3,4,6,9,12,18,24,30,36,48]
+
+target:
+  type: diff
+  horizon_days: 1
+
+features:
+  lags_days: [1,2,5]
+  rolling_windows_days: [5,21]
+  spreads: true
+  standardize_features: true
+
+split:
+  mode: expanding
+
+model:
+  family: OLS
+  params: CDS_dom, CDS_glob, Focus IPCA (mutiple horizons), Ibov, real interest rate 1Y, real interest rate 3Y, Overnight, LTN-F, LTN 
+
+save:
+  save_processed_dataset: true
+  save_model: true
+  save_predictions: true
+  save_metrics: true
