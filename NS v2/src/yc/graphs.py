@@ -551,6 +551,57 @@ def plot_pred_vs_obs_scatter(data: dict, output_dir: str = None):
 
 
 # ============================================================================
+# 11. DAILY FIT QUALITY (RMSE) — estilo backtest_betas_rmse (parte 2)
+# ============================================================================
+
+def plot_dailyfit_quality_rmse(ns_diag_path: str = None, output_dir: str = None):
+    """
+    Série temporal de qualidade do ajuste diário (fit_rmse).
+    Replica a parte 2 do gráfico backtest_betas_rmse.png em um painel dedicado.
+    """
+    if ns_diag_path is None:
+        ns_diag_path = Path('NS v2/data/ns_fit_diagnostics_weekly.csv')
+    else:
+        ns_diag_path = Path(ns_diag_path)
+
+    if output_dir is None:
+        output_dir = Path('NS v2/reports/evaluation')
+    else:
+        output_dir = Path(output_dir)
+
+    if not ns_diag_path.exists():
+        raise FileNotFoundError(f"Arquivo de diagnóstico não encontrado: {ns_diag_path}")
+
+    df_diag = pd.read_csv(ns_diag_path)
+    required_cols = {'week_ref', 'fit_rmse'}
+    if not required_cols.issubset(df_diag.columns):
+        raise ValueError(
+            f"Colunas obrigatórias ausentes em {ns_diag_path}. "
+            f"Esperadas: {sorted(required_cols)} | Presentes: {sorted(df_diag.columns.tolist())}"
+        )
+
+    df_diag = df_diag[['week_ref', 'fit_rmse']].copy()
+    df_diag['week_ref'] = pd.to_datetime(df_diag['week_ref'], errors='coerce')
+    df_diag['fit_rmse'] = pd.to_numeric(df_diag['fit_rmse'], errors='coerce')
+    df_diag = df_diag.dropna(subset=['week_ref', 'fit_rmse']).sort_values('week_ref')
+
+    fig, ax = plt.subplots(figsize=(14, 4.8))
+    ax.plot(df_diag['week_ref'], df_diag['fit_rmse'], linewidth=1.5, color='#0B1F3A')
+
+    ax.set_title('Daily Fit Quality (RMSE)', fontsize=12, fontweight='bold')
+    ax.set_ylabel('RMSE (% a.a.)')
+    ax.set_xlabel('Date')
+    ax.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    out_path = output_dir / '11_dailyfit_quality_rmse.png'
+    fig.savefig(out_path, dpi=300, bbox_inches='tight')
+    print(f"✓ Gráfico 11: Daily Fit Quality (RMSE) | {out_path}")
+    plt.close(fig)
+
+
+# ============================================================================
 # MAIN: Gera todos os gráficos
 # ============================================================================
 
@@ -585,9 +636,11 @@ def generate_all_graphs(data_dir: str = None, output_dir: str = None):
     plot_relmae_heatmaps(data, output_dir)
     plot_bias_comparison(data, output_dir)
     plot_pred_vs_obs_scatter(data, output_dir)
+    ns_diag_path = Path(data_dir).parents[1] / 'data' / 'ns_fit_diagnostics_weekly.csv'
+    plot_dailyfit_quality_rmse(ns_diag_path=ns_diag_path, output_dir=output_dir)
     
     print("\n" + "="*70)
-    print("✅ TODOS OS 10 GRÁFICOS GERADOS")
+    print("✅ TODOS OS 11 GRÁFICOS GERADOS")
     print(f"📁 Salvos em: {Path(output_dir).absolute()}")
     print("="*70 + "\n")
 

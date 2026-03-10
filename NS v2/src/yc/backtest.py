@@ -115,10 +115,10 @@ def _build_common_support_set(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _calc_mae_tables(df: pd.DataFrame) -> dict[str, pd.DataFrame]:
-	"""Calculate MAE by (model, horizon, tau)."""
+	"""Calculate error metrics by (model, horizon, tau)."""
 	tables = {}
 
-	for metric_name, metric_col in [("mae", "abs_error"), ("bias", "error")]:
+	for metric_name in ["mae", "rmse", "bias"]:
 		rows = []
 		for model in sorted(df["model_id"].unique()):
 			for h in sorted(df["horizon_steps"].unique()):
@@ -133,7 +133,9 @@ def _calc_mae_tables(df: pd.DataFrame) -> dict[str, pd.DataFrame]:
 						row_data[f"tau_{int(tau)}y"] = np.nan
 					else:
 						if metric_name == "mae":
-							val = float(subset[metric_col].mean())
+							val = float(subset["abs_error"].mean())
+						elif metric_name == "rmse":
+							val = float(np.sqrt((subset["error"] ** 2).mean()))
 						else:  # bias
 							val = float(subset["error"].mean())
 						row_data[f"tau_{int(tau)}y"] = val
@@ -303,6 +305,7 @@ def run_evaluation(
 	# MAE tables
 	mae_tables = _calc_mae_tables(df_eval)
 	mae_tables["mae"].to_csv(output_dir / "eval_oos_mae.csv", index=False)
+	mae_tables["rmse"].to_csv(output_dir / "eval_oos_rmse.csv", index=False)
 	mae_tables["bias"].to_csv(output_dir / "eval_oos_bias.csv", index=False)
 
 	# RelMAE vs RW
@@ -328,6 +331,8 @@ def run_evaluation(
 	# Display-friendly versions (formatted strings)
 	mae_display = _format_table_for_display(mae_tables["mae"], metric_name="mae", decimals=4)
 	mae_display.to_csv(output_dir / "eval_oos_mae_display.csv", index=False)
+	rmse_display = _format_table_for_display(mae_tables["rmse"], metric_name="rmse", decimals=4)
+	rmse_display.to_csv(output_dir / "eval_oos_rmse_display.csv", index=False)
 
 	if not relmae.empty:
 		relmae_display = _format_table_for_display(relmae, metric_name="relmae", decimals=3)
@@ -381,6 +386,7 @@ def main() -> None:
 	print("  - eval_oos_panel_long.csv (painel consolidado)")
 	print("  - eval_oos_coverage.csv (cobertura por modelo/h/tau)")
 	print("  - eval_oos_mae.csv (MAE absoluto)")
+	print("  - eval_oos_rmse.csv (RMSE)")
 	print("  - eval_oos_bias.csv (bias médio)")
 	print("  - eval_oos_relmae_vs_rw.csv (MAE relativo ao RW)")
 	print("  - eval_oos_winrate_vs_rw.csv (% ganho vs RW)")
@@ -397,6 +403,10 @@ def main() -> None:
 	if not results["mae_tables"]["mae"].empty:
 		print("\nMAE por modelo (primeiras linhas):")
 		print(results["mae_tables"]["mae"].head(6).to_string(index=False))
+
+	if not results["mae_tables"]["rmse"].empty:
+		print("\nRMSE por modelo (primeiras linhas):")
+		print(results["mae_tables"]["rmse"].head(6).to_string(index=False))
 
 	if not results["relmae"].empty:
 		print("\nRelMAE vs RW (primeiras linhas):")
